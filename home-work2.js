@@ -7,16 +7,33 @@
 //     };
 // }
 
-//РЕШЕНИЕ:
+//РЕШЕНИЕ 1:
+
 var result = [];
 
 for (var i = 0; i < 5; i++) {
     let counter = i;
-    result.push(function () {
-        console.log(counter);
-    });
+    result.push(() => console.log(counter));
 }
 
+//тоже самое только записано по-другому
+var result = [];
+
+for (var i = 0; i < 5; i++) {
+    let counter = i;
+    result[i] = function () {
+        console.log(counter);
+    };
+}
+
+//РЕШЕНИЕ 2:
+var result = [];
+
+for (let i = 0; i < 5; i++) {
+    result[i] = function () {
+        console.log(i);
+    };
+}
 
 // result[0](); //5
 // result[1](); //5
@@ -36,14 +53,46 @@ for (var i = 0; i < 5; i++) {
 //         }
 //         i++
 //     }
-//
+
 //     return students;
 // }
-//
+
 // let group = getGroup();
-//
+
 // group[0](); // 10 как исправить на 0
 // group[5](); // 10                  5
+
+//РЕШЕНИЕ 1:
+
+function getGroup() {
+    let students = [];
+    let i = 0;
+    while (i < 10) {
+        let counter = i;
+        students[i] = function() {
+            console.log(counter);
+        }
+        i++
+    }
+
+    return students;
+}
+
+let group = getGroup();
+
+//РЕШЕНИЕ 2:
+
+function getGroup() {
+    let students = [];
+    for (let i = 0; i < 10; i++) {
+        students.push(() => console.log(i));
+    }
+
+    return students;
+}
+
+let group = getGroup();
+
 
 //////////////////////////////////////////////////
 
