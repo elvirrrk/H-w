@@ -134,9 +134,7 @@ function multiply(n = 1) {
 function getUniqArray(arr) {
 	const checkType = (value) => (isFinite(value) && value !== null);
 	if (!arr.every(checkType)) {
-		let TypeError = new Error;
-		TypeError.message = "В getUniqArray был передан невалидный параметр. Аргумент arr должен быть массивом чисел";
-		throw TypeError;
+		throw new Error("В getUniqArray был передан невалидный параметр. Аргумент arr должен быть массивом чисел");
 	}
 	const uniqArray = Array.from(new Set(arr));
 	return uniqArray;
