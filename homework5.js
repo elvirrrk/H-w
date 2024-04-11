@@ -58,10 +58,8 @@ Animal.prototype.speak = function() {
   console.log("Some generic sound");
 };
 
-Object.setPrototypeOf(Bird, Animal);
-// console.log(Object.getPrototypeOf(Bird)); // [Function: Animal]
-Object.setPrototypeOf(Bird.prototype, Animal.prototype);
-// console.log(Bird.prototype);// Animal {}
+Bird.prototype = Object.create(Animal.prototype);
+Bird.prototype.constructor = Bird;
 
 function Bird(name) {
   this.name = name;
