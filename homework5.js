@@ -52,12 +52,23 @@
 // функции-кострукторы
 function Animal (name) {
   this.name = name;
-  this.speak = () => console.log("Some generic sound");
 };
 
+Animal.prototype.speak = function() {
+  console.log("Some generic sound");
+};
+
+Object.setPrototypeOf(Bird, Animal);
+// console.log(Object.getPrototypeOf(Bird)); // [Function: Animal]
+Object.setPrototypeOf(Bird.prototype, Animal.prototype);
+// console.log(Bird.prototype);// Animal {}
+
 function Bird(name) {
-    Animal.call(this, name); 
-    this.fly = () => console.log("Flying high!");
+  this.name = name;
+};
+
+Bird.prototype.fly = function() {
+  console.log("Flying high!");
 };
 
 
